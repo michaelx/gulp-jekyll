@@ -1,9 +1,14 @@
+// Jekyll wipes out all files on recreation.
+// We don’t want to recreate all assets on every Jekyll build though.
+// That’s why assets are served from a different folder on the development build.
+// BrowserSync watches only the asset files.
+
 var src               = 'app';
 var build             = 'build';
-var development       = 'build/development';
+var development       = 'build/development'; // holds the files created by Jekyll
 var production        = 'build/production';
-var srcAssets         = 'app/_assets';
-var developmentAssets = 'build/assets';
+var srcAssets         = 'app/_assets'; // links to source maps
+var developmentAssets = 'build/assets'; // holds the assets for the dev build
 var productionAssets  = 'build/production/assets';
 
 module.exports = {
@@ -18,13 +23,15 @@ module.exports = {
         developmentAssets + '/js/*.js',
         developmentAssets + '/images/**',
         developmentAssets + '/fonts/*'
-      ]
+      ],
+      notify: false
     },
     production: {
       server: {
         baseDir: [production]
       },
-      port: 9998
+      port: 9998,
+      notify: false
     }
   },
   delete: {
@@ -65,9 +72,7 @@ module.exports = {
   lintStyles: {
     src: [
       srcAssets + '/styles/**/*.css',
-      '!' + srcAssets + '/styles/partials/_syntax-highlighting.css',
-      '!' + srcAssets + '/styles/partials/_sprites.css',
-      '!' + srcAssets + '/styles/partials/fontcustom.css'
+      '!' + srcAssets + '/styles/partials/_syntax-highlighting.css'
     ],
     options: {
       stylelint: {
@@ -110,7 +115,10 @@ module.exports = {
   webp: {
     src: productionAssets + '/images/**/*.{jpg,jpeg,png}',
     dest: productionAssets + '/images/',
-    options: {}
+    options: {
+      preset: 'photo',
+      quality: 90
+    }
   },
   gzip: {
     src: production + '/**/*.{html,xml,json,css,js}',
@@ -155,7 +163,7 @@ module.exports = {
     scripts: srcAssets + '/javascripts/**/*.js',
     images:  srcAssets + '/images/**/*',
     sprites: srcAssets + '/images/**/*.png',
-    svg:     'vectors/*.svg'
+    svg:     srcAssets + '/images/**/*.svg',
   },
   jshint: {
     src: srcAssets + '/javascripts/*.js'
@@ -218,8 +226,8 @@ module.exports = {
     src: {
       assets: [
         productionAssets + '/css/*.css',
-        productionAssets + '/js/*.js',
-        productionAssets + '/images/**/*'
+        productionAssets + '/js/*.js'
+        //productionAssets + '/images/**/*'
       ],
       base: production
     },

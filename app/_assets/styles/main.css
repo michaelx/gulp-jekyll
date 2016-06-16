@@ -23,4 +23,3 @@ $on-laptop:        800px;
 @import "partials/base";
 @import "partials/layout";
 @import "partials/syntax-highlighting";
-@import "partials/fontcustom.css";

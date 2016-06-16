@@ -9,22 +9,22 @@ gulp.task('build:production', function(callback) {
   [
     'styles',
     'scripts',
-    'images',
-    'copy:fonts'
+    'images'
+    //'copy:fonts'
   ],
   'base64',
   [
     'optimize:css',
     'optimize:js',
     'optimize:images',
-    'optimize:html',
-    'copy:fonts:production'
+    'optimize:html'
+    //'copy:fonts:production'
   ],
   'revision',
   'rev:collect',
   [
-    'webp',
-    'gzip'
+    'webp'
+    //'gzip'
   ],
   callback);
 });
