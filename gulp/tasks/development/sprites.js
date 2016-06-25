@@ -2,9 +2,7 @@ var gulp        = require('gulp');
 var spritesmith = require('gulp.spritesmith');
 var config      = require('../../config').sprites;
 
-/**
- * Generate sprite and css file from PNGs
- */
+// Generate sprite and CSS file, from PNGs
 gulp.task('sprites', function() {
 
   var spriteData = gulp.src(config.src).pipe(spritesmith(config.options));

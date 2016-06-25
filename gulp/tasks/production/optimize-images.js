@@ -3,9 +3,7 @@ var imagemin = require('gulp-imagemin');
 var size     = require('gulp-size');
 var config   = require('../../config').optimize.images;
 
-/**
- * Copy and minimize image files
- */
+// Copy and minimize images
 gulp.task('optimize:images', function() {
   return gulp.src(config.src)
     .pipe(imagemin(config.options))

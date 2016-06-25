@@ -2,12 +2,12 @@
 
 Jekyll + Gulp.js + BrowserSync + PostCSS
 
-Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial), adjusted to fit my project preferences.
+Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial), adjusted and extended to fit my project preferences.
 
 ### Differences
 
+- Current Jekyll 3.1.6 and npm packages (tested)
 - Removed FontCustom
-- Current Jekyll 3.1.6
 - Removed some assets (fonts, sprites, icons, vectors)
 - Disabled sprites and fonts watch task
 - Disabled gzip task, will be covered by s3_website

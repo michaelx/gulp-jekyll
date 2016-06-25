@@ -1,9 +1,7 @@
 var gulp   = require('gulp');
 var config = require('../../config').watch;
 
-/**
- * Start browsersync task and then watch files for changes
- */
+// Start BrowserSync task and watch files for changes
 gulp.task('watch', ['browsersync'], function() {
   gulp.watch(config.jekyll,  ['jekyll-rebuild']);
   gulp.watch(config.styles,  ['styles', 'lint-styles']);

@@ -3,9 +3,7 @@ var cp          = require('child_process');
 var browsersync = require('browser-sync');
 var config      = require('../../config').jekyll.development;
 
-/**
- * Build the Jekyll Site
- */
+// Build the Jekyll site
 gulp.task('jekyll', function(done) {
   browsersync.notify('Compiling Jekyll');
 

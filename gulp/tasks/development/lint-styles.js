@@ -4,6 +4,7 @@ var stylelint = require('stylelint');
 var reporter  = require('postcss-reporter');
 var config    = require('../../config');
 
+// Lint styles
 gulp.task('lint-styles', function () {
   return gulp.src(config.lintStyles.src)
   .pipe(postcss([

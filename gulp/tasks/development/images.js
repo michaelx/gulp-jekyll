@@ -2,10 +2,7 @@ var gulp        = require('gulp');
 var changed     = require('gulp-changed');
 var config      = require('../../config').images;
 
-/**
- * Copy images to build folder
- * if not changed
- */
+// Copy images to build folder
 gulp.task('images', function() {
   return gulp.src(config.src)
     .pipe(changed(config.dest)) // Ignore unchanged files

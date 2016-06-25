@@ -3,9 +3,7 @@ var uglify = require('gulp-uglify');
 var size   = require('gulp-size');
 var config = require('../../config').optimize.js;
 
-/**
- * Copy and minimize JS files
- */
+// Copy and minimize JS files
 gulp.task('optimize:js', function() {
   return gulp.src(config.src)
     .pipe(uglify(config.options))

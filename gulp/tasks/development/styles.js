@@ -17,8 +17,8 @@ function onError (err) {
 }
 
 /**
- * Rund CSS through PostCSS and it's plugins
- * Build sourcemaps and minimize
+ * Run CSS through PostCSS and it’s plugins.
+ * Build sourcemaps and minimize.
  */
 var processors = [
   precss(config.styles.options.precss),
