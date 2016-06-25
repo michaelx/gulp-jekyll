@@ -72,18 +72,15 @@ module.exports = {
   lintStyles: {
     src: [
       srcAssets + '/styles/**/*.css',
-      '!' + srcAssets + '/styles/partials/_syntax-highlighting.css'
+      '!' + srcAssets + '/styles/vendor/**'
     ],
     options: {
       stylelint: {
         'rules': {
-          'string-quotes': [2, 'double'],
-          'color-hex-case': [2, 'lower'],
-          'value-no-vendor-prefix': 2,
-          'declaration-no-important': 0,
-          'rule-non-nested-empty-line-before': [2, 'always', {
-            ignore: ['after-comment']
-          }]
+          'string-quotes': 'double',
+          'color-hex-case': 'lower',
+          'value-no-vendor-prefix': true,
+          'declaration-no-important': true
         }
       },
       reporter: {
@@ -171,11 +168,11 @@ module.exports = {
   sprites: {
     src: srcAssets + '/images/sprites/icon/*.png',
     dest: {
-      css: srcAssets + '/styles/partials/base/',
+      css: srcAssets + '/styles/base/',
       image: srcAssets + '/images/sprites/'
     },
     options: {
-      cssName: '_sprites.scss',
+      cssName: '_sprites.css',
       cssFormat: 'css',
       cssOpts: {
         cssClass: function (item) {

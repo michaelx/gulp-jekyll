@@ -1,25 +1,29 @@
 @charset "utf-8";
 
-/* Our variables */
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  calc($base-font-size * 0.875);
-$base-line-height: 1.5;
+/* Configuration and helpers */
+@import "utilities/variables";
+@import "utilities/functions";
+@import "utilities/mixins";
 
-$spacing-unit:     30px;
+/* Third-party */
+@import "vendor/normalize";
+@import "vendor/syntax-highlighting";
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+/* Base */
+@import "base/reset";
+@import "base/base";
+@import "base/typography";
 
-$grey-color:       #828282;
-$grey-color-light: color($grey-color lightness(90%));
-$grey-color-dark:  color($grey-color shade(40%));
+/* Layout sections */
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/footer";
 
-$on-palm:          600px;
-$on-laptop:        800px;
+/* Components */
+@import "components/example";
 
-@import "partials/mixins";
-@import "partials/base";
-@import "partials/layout";
-@import "partials/syntax-highlighting";
+/* Page-specific styles */
+@import "pages/post";
+
+/* Themes */
+@import "themes/default";
