@@ -1,8 +1,8 @@
 body {
   font-family: $base-font-family;
   font-size: $base-font-size;
-  line-height: $base-line-height;
   font-weight: 300;
+  line-height: $base-line-height;
   color: $text-color;
   text-size-adjust: 100%;
 }

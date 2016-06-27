@@ -29,7 +29,7 @@
   font-size: 42px;
   letter-spacing: -1px;
   line-height: 1;
-  @media screen and (width <=$on-laptop) {
+  @media screen and (width <= $on-laptop) {
     font-size: 36px;
   }
 }
@@ -38,19 +38,19 @@
   margin-bottom: $spacing-unit;
   h2 {
     font-size: 32px;
-    @media screen and (width <=$on-laptop) {
+    @media screen and (width <= $on-laptop) {
       font-size: 28px;
     }
   }
   h3 {
     font-size: 26px;
-    @media screen and (width <=$on-laptop) {
+    @media screen and (width <= $on-laptop) {
       font-size: 22px;
     }
   }
   h4 {
     font-size: 20px;
-    @media screen and (width <=$on-laptop) {
+    @media screen and (width <= $on-laptop) {
       font-size: 18px;
     }
   }
