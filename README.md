@@ -7,6 +7,7 @@ Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakur
 ### Differences
 
 - New CSS organization, based on 7-1 pattern *(see below)*
+- Extensive stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide)
 - Current Jekyll 3.1.6 and npm packages (tested)
 - Removed FontCustom
 - Removed some assets (fonts, sprites, icons, vectors)
@@ -16,7 +17,6 @@ Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakur
 
 ### What’s Coming Next
 
-- stylelint config
 - UnCSS task
 - Minify json, xml, svg task
 - s3 preview task
