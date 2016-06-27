@@ -75,14 +75,7 @@ module.exports = {
       '!' + srcAssets + '/styles/vendor/**'
     ],
     options: {
-      stylelint: {
-        'rules': {
-          'string-quotes': 'double',
-          'color-hex-case': 'lower',
-          'value-no-vendor-prefix': true,
-          'declaration-no-important': true
-        }
-      },
+      stylelint: {}, // Using .stylelintrc
       reporter: {
         clearMessages: true
       }

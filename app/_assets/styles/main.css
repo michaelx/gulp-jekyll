@@ -17,13 +17,8 @@
 /* Layout sections */
 @import "layout/header";
 @import "layout/navigation";
+@import "layout/content";
 @import "layout/footer";
 
 /* Components */
-@import "components/example";
-
-/* Page-specific styles */
-@import "pages/post";
-
-/* Themes */
-@import "themes/default";
+@import "components/post";

@@ -6,6 +6,7 @@ Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakur
 
 ### Differences
 
+- New CSS organization, based on 7-1 pattern *(see below)*
 - Current Jekyll 3.1.6 and npm packages (tested)
 - Removed FontCustom
 - Removed some assets (fonts, sprites, icons, vectors)
@@ -15,6 +16,7 @@ Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakur
 
 ### What’s Coming Next
 
+- stylelint config
 - UnCSS task
 - Minify json, xml, svg task
 - s3 preview task
@@ -60,6 +62,47 @@ $ gulp deploy
 - Running `gulp` will start a development server, build assets and the Jekyll site and start a `watch` task.
 - Running `gulp publish` will copy and optimize assets and run a production build of Jekyll.
 - Running `gulp deploy` will copy the generated files with Rsync to your server.
+
+## CSS File Organization
+
+gulp-jekyll uses a 5-1 pattern, which is abstracted from the [7-1 pattern](https://sass-guidelin.es/#architecture). 5 folders, 1 file to compile them all in a single CSS file.
+
+```bash
+styles/
+|
+|- utilities/            # Configuration and helpers
+|   |- _variables.css    # Global variables
+|   |- _functions.css
+|   |- _mixins.css
+|   …
+|
+|- vendor/               # Third-party CSS
+|   |- _normalize.css
+|   …
+|
+|- base/                 # Boilerplate code
+|   |- _reset.css
+|   |- _base.css
+|   |- _typography.css
+|   …
+|
+|- layout/               # Global wireframe (macro)
+|   |- _header.css
+|   |- _navigation.css
+|   |- _sidebar.css
+|   |- _footer.css
+|   …
+|
+|- components/           # Modules (micro)
+|   |- _buttons.css
+|   |- _cards.css
+|   |- _tables.css
+|   …
+|
+`- main.css              # Main file to import everything
+```
+
+---
 
 ## Credits
 
