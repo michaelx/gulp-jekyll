@@ -14,6 +14,7 @@ Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakur
 - Disabled sprites and fonts watch task
 - Disabled gzip task, will be covered by s3_website
 - Added a few comments here and there for clarity
+- JSON-LD instead of Microdata markup for structured data
 
 ### What’s Coming Next
 
@@ -21,6 +22,7 @@ Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakur
 - Minify json, xml, svg task
 - s3 preview task
 - s3 publish task
+- JSON-LD generator
 
 ## Installation
 
