@@ -41,7 +41,8 @@ module.exports = {
     development: {
       src:    src,
       dest:   development,
-      config: '_config.yml'
+      config: '_config.yml',
+      option: '--profile'
     },
     production: {
       src:    src,

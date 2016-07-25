@@ -7,7 +7,7 @@ var config      = require('../../config').jekyll.development;
 gulp.task('jekyll', function(done) {
   browsersync.notify('Compiling Jekyll');
 
-  return cp.spawn('bundle', ['exec', 'jekyll', 'build', '-q', '--source=' + config.src, '--destination=' + config.dest, '--config=' + config.config], { stdio: 'inherit' })
+  return cp.spawn('bundle', ['exec', 'jekyll', 'build', '-q', '--source=' + config.src, '--destination=' + config.dest, '--config=' + config.config, config.option], { stdio: 'inherit' })
   .on('close', done);
 });
 

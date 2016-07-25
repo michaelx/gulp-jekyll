@@ -1,23 +1,25 @@
 # gulp-jekyll
 
-Jekyll + Gulp.js + BrowserSync + PostCSS
+Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
 
 Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial), adjusted and extended to fit my project preferences.
 
 ### Differences
 
 - New CSS organization, based on 7-1 pattern *(see below)*
-- Extensive stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide)
+- Extensive Stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide)
 - Current Jekyll 3.1.6 and npm packages (tested)
 - Removed FontCustom
 - Removed some assets (fonts, sprites, icons, vectors)
 - Disabled sprites and fonts watch task
 - Disabled gzip task, will be covered by s3_website
+- Added Jekyll config.option with Liquid profiler as default option to Gulp task
 - Added a few comments here and there for clarity
 - JSON-LD instead of Microdata markup for structured data
 
 ### What’s Coming Next
 
+- Modularizing the default Jekyll theme, to make use of the new 7-1 pattern
 - UnCSS task
 - Minify json, xml, svg task
 - s3 preview task
