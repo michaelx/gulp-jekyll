@@ -5,7 +5,7 @@ var reporter  = require('postcss-reporter');
 var config    = require('../../config');
 
 // Lint styles
-// Exectuted in watch.js
+// Executed in watch.js
 gulp.task('lint-styles', function () {
   return gulp.src(config.lintStyles.src)
   .pipe(postcss([

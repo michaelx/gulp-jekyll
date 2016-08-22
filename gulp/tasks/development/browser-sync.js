@@ -6,3 +6,8 @@ var config      = require('../../config').browsersync.development;
 gulp.task('browsersync', ['build'], function() {
   browsersync(config);
 });
+
+// Reload task, that is used by jekyll-rebuild
+gulp.task('browsersync:reload', function() {
+  browsersync.reload();
+});

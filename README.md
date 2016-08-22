@@ -2,26 +2,26 @@
 
 Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
 
-Based on Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial), adjusted and extended to fit my project preferences.
+## Features
 
-### Differences
-
-- New CSS organization, based on 7-1 pattern *(see below)*
-- Extensive Stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide)
-- Current Jekyll 3.1.6 and npm packages (tested)
-- Removed FontCustom
-- Removed some assets (fonts, sprites, icons, vectors)
-- Disabled sprites and fonts watch task
-- Disabled gzip task, will be covered by s3_website
-- Added Jekyll config.option with Liquid profiler as default option to Gulp task
-- Added a few comments here and there for clarity
-- JSON-LD instead of Microdata markup for structured data
+- PostCSS with PreCSS, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
+- UnCSS for production.
+- Jekyll build and rebuild with BrowserSync.
+- Browserify or just gulp-concat, as you prefer.
+- Optimization (and minification) of images, HTML, CSS, JavaScript, JSON, and XML files.
+- Linting with JSHint and Stylelint.
+- Extensive Stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide).
+- Responsive image creation, or image resizing, through either GraphicsMagick or ImageMagick.
+- Image sprites.
+- Gzip compression.
+- Asset file revisions.
+- WebP image generation.
+- Deployment with rsync or [s3_website](https://github.com/laurilehmijoki/s3_website).
 
 ### What’s Coming Next
 
+- User-guide
 - Modularizing the default Jekyll theme, to make use of the new 7-1 pattern
-- UnCSS task
-- Minify json, xml, svg task
 - s3 preview task
 - s3 publish task
 - JSON-LD generator
@@ -36,22 +36,9 @@ $ bower install
 $ npm install
 ```
 
-**Hint**: If you get errors while installing `gulp-imagemin` it may help to execute this command before running `npm install`:
-
-```sh
-export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
-```
-
-**Hint**: I recently ran into problem with `gulp-imagemin`. This may be an error with my current version of node. But if you get the same error on `gulp publish`, while optimizing images install manually these files:
-
-```sh
-$ npm install optipng-bin
-$ npm install cwebp-bin
-```
-
 ## Setup
 
-Open `gulp/config.js` and change settings if needed. Only the `rsync` settings need to be adjusted. Change the `destination` to a path on your webserver and change `hostname` and `username`.
+Open `gulp/config.js` and change settings if needed.
 
 ## Running Gulp.js
 
@@ -110,5 +97,5 @@ styles/
 
 ## Credits
 
-- Stefan Imhoff’s [Gulp.js series](http://stefanimhoff.de/2014/gulp-tutorial-1-intro-setup/)
+- gulp-jekyll started out as a fork of Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial).
 - [Michael Xander](http://michaelxander.com)

@@ -5,24 +5,40 @@ var runSequence = require('run-sequence');
 gulp.task('build:production', function(callback) {
   runSequence('delete', 'jekyll:production',
   [
-    'styles',
-    'scripts',
-    'images'
-    //'copy:fonts'
+    // Use just 'styles', when CSS sourcemaps
+    // are needed.
+    'styles:production',
+
+    // If you don’t want to use Browserify,
+    // replace 'scripts-browserify' with:
+    // 'scripts',
+    // 'scripts:standalones',
+    'scripts-browserify',
+
+    'images',
+    'responsive-images'
+    // 'copy:fonts'
   ],
-  'base64',
+  // 'base64',
   [
-    'optimize:css',
+    'copy:css',
     'optimize:js',
+    'optimize:json',
+    'optimize:xml',
     'optimize:images',
-    'optimize:html'
-    //'copy:fonts:production'
+    'optimize:html:production'
+    // 'copy:fonts:production'
   ],
-  'revision',
-  'rev:collect',
+  // After optimize:html, so that all files exist
+  // for Phantom.JS
   [
-    'webp'
-    //'gzip'
+    'optimize:css'
   ],
+  //'revision',
+  //'rev:collect',
+  // [
+  //   'webp'
+  //   'gzip'
+  // ],
   callback);
 });

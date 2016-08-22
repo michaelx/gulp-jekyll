@@ -7,10 +7,21 @@ gulp.task('build', function(callback) {
   [
     'jekyll',
     'styles',
-    'scripts',
+
+    // If you don’t want to use Browserify,
+    // replace 'scripts-browserify' with:
+    // 'scripts',
+    // 'scripts:standalones',
+    'scripts-browserify',
+
     'images'
-    //'copy:fonts'
+    // 'responsive-images'
+    // 'copy:fonts'
   ],
-  'base64',
+  // 'base64',
+  [
+    'optimize:html'
+    // 'copy:fonts:production'
+  ],
   callback);
 });

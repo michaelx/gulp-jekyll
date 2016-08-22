@@ -67,7 +67,7 @@ module.exports = {
         ],
         cascade: true
       },
-      mqpacker: {}
+      mqpacker: { sort: true }
     }
   },
   lintStyles: {
@@ -82,17 +82,33 @@ module.exports = {
       }
     }
   },
+  // If Browserify is not used
+  scripts: {
+    src: [
+      srcAssets + '/javascripts/**/*.js'
+    ],
+    dest: developmentAssets + '/js',
+    outputName: 'main.js',
+    standaloneFiles: [
+      // srcAssets + '/javascripts/example-vendor.js'
+    ]
+  },
   browserify: {
     // Enable source maps
     debug: true,
     // Additional file extensions to make optional
     extensions: ['.coffee', '.hbs'],
     // A separate bundle will be generated for each
-    // bundle config in the list below
+    // bundle config in the list below.
+    //
+    // head.js is loaded in the head of the website, and
+    // contains everything that needs to be loaded asap.
+    // app.js is loaded at the bottom, and contains
+    // everything that can be loaded after rendering.
     bundleConfigs: [{
-      entries:    './' + srcAssets + '/javascripts/application.js',
+      entries:    './' + srcAssets + '/javascripts/app.js',
       dest:       developmentAssets + '/js',
-      outputName: 'application.js'
+      outputName: 'app.js'
     }, {
       entries:    './' + srcAssets + '/javascripts/head.js',
       dest:       developmentAssets + '/js',
@@ -102,6 +118,18 @@ module.exports = {
   images: {
     src:  srcAssets + '/images/**/*',
     dest: developmentAssets + '/images'
+  },
+  responsiveImages: {
+    src:  srcAssets + '/images/example/*.jpg',
+    dest: developmentAssets + '/images/example',
+    outputSuffix: '-768',
+    options: {
+      imageMagick: false,
+      width : 768,
+      quality: 0.85,
+      filter: 'Lanczos',
+      sharpen: '2x0.5+0.5+0'
+    }
   },
   webp: {
     src: productionAssets + '/images/**/*.{jpg,jpeg,png}',
@@ -183,12 +211,22 @@ module.exports = {
       imgPath: '/assets/images/sprites/icon-sprite.png'
     }
   },
+  copycss: {
+    src:  developmentAssets + '/css/*.css',
+    dest: productionAssets + '/css/'
+  },
   optimize: {
     css: {
-      src:  developmentAssets + '/css/*.css',
+      src:  productionAssets + '/css/*.css',
       dest: productionAssets + '/css/',
       options: {
-        keepSpecialComments: 0
+        uncss: {
+          html: [
+            production + '/**/*.html'
+          ],
+          ignore: [
+          ]
+        }
       }
     },
     js: {
@@ -196,20 +234,55 @@ module.exports = {
       dest: productionAssets + '/js/',
       options: {}
     },
+    json: {
+      src:  production + '/**/*.json',
+      dest: production
+    },
+    xml: {
+      src:  production + '/**/*.xml',
+      dest: production,
+      options: { type: 'minify' }
+    },
     images: {
-      src:  developmentAssets + '/images/**/*.{jpg,jpeg,png,gif}',
+      src:  developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,svg}',
       dest: productionAssets + '/images/',
+      // @TODO Options needs to be adjusted on update to imagemin@3.x.x
       options: {
         optimizationLevel: 3,
         progessive: true,
-        interlaced: true
+        interlaced: true,
+        verbose: false,
+        svgoPlugins: [{
+          removeDesc: true
+        }]
       }
     },
     html: {
-      src: production + '/**/*.html',
-      dest: production,
-      options: {
-        collapseWhitespace: true
+      development: {
+        src: development + '/**/*.html',
+        dest: development,
+        options: {
+          removeComments: true,
+          removeCommentsFromCDATA: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          minifyJS: true,
+          minifyCSS: true,
+          processScripts: ['application/ld+json']
+        }
+      },
+      production: {
+        src: production + '/**/*.html',
+        dest: production,
+        options: {
+          removeComments: true,
+          removeCommentsFromCDATA: true,
+          collapseWhitespace: true,
+          removeAttributeQuotes: true,
+          minifyJS: true,
+          minifyCSS: true,
+          processScripts: ['application/ld+json']
+        }
       }
     }
   },
