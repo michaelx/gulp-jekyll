@@ -33,6 +33,7 @@
     "gulp-image-resize": "^0.10.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-jshint": "^2.0.1",
+    "gulp-jsonlint": "^1.1.2",
     "gulp-jsonminify": "^1.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",

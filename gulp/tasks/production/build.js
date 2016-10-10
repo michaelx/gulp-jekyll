@@ -29,10 +29,11 @@ gulp.task('build:production', function(callback) {
     'optimize:html:production'
     // 'copy:fonts:production'
   ],
-  // After optimize:html, so that all files exist
+  // CSS after optimize:html, so that all files exist
   // for Phantom.JS
   [
-    'optimize:css'
+    'optimize:css',
+    'lint-json'
   ],
   //'revision',
   //'rev:collect',

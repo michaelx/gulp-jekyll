@@ -286,6 +286,9 @@ module.exports = {
       }
     }
   },
+  lintJson: {
+    src:  production + '/**/*.json'
+  },
   revision: {
     src: {
       assets: [
