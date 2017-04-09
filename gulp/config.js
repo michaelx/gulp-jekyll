@@ -78,7 +78,7 @@ module.exports = {
     options: {
       stylelint: {}, // Using .stylelintrc
       reporter: {
-        clearMessages: true
+        clearReportedMessages: true
       }
     }
   },
@@ -246,16 +246,13 @@ module.exports = {
     images: {
       src:  developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,svg}',
       dest: productionAssets + '/images/',
-      // @TODO Options needs to be adjusted on update to imagemin@3.x.x
-      options: {
-        optimizationLevel: 3,
-        progessive: true,
-        interlaced: true,
-        verbose: false,
-        svgoPlugins: [{
-          removeDesc: true
-        }]
-      }
+      imageminPluginOptions: {
+        gifsicle: { interlaced: true },
+        jpegtran: { progressive: true },
+        optipng: { optimizationLevel: 3 },
+        svgo: { plugins: [{ removeDesc: true }] }
+      },
+      imageminOptions: { verbose: false }
     },
     html: {
       development: {
