@@ -1,23 +1,32 @@
+// Paths
+//
 // Jekyll wipes out all files on recreation.
-// We don’t want to recreate all assets on every Jekyll build though.
-// That’s why assets are served from a different folder on the development build.
-// BrowserSync watches only the asset files.
-
+// We don’t want to recreate all assets on every Jekyll build
+// though. That’s why assets are served from a different
+// folder on the development build. BrowserSync watches only
+// the asset files.
 var src               = 'app';
 var build             = 'build';
-var development       = 'build/development'; // holds the files created by Jekyll
-var production        = 'build/production';
-var srcAssets         = 'app/_assets'; // links to source maps
-var developmentAssets = 'build/assets'; // holds the assets for the dev build
-var productionAssets  = 'build/production/assets';
+var development       = build + '/development';
+var production        = build + '/production';
+
+// Assets
+var srcAssets         = src + '/_assets';
+var developmentAssets = build + '/assets';
+var productionAssets  = build + '/production/assets';
+
 
 module.exports = {
+
+  // BrowserSync
   browsersync: {
     development: {
       server: {
         baseDir: [development, build, src]
       },
       port: 9999,
+      // Watched files in the dev build. BS reloads
+      // website on change.
       files: [
         developmentAssets + '/css/*.css',
         developmentAssets + '/js/*.js',
@@ -34,9 +43,35 @@ module.exports = {
       notify: false
     }
   },
+
+  // Watch source files
+  watch: {
+    jekyll: [
+      '_config.yml',
+      '_config.build.yml',
+      'stopwords.txt',
+      src + '/_data/**/*.{json,yml,csv}',
+      src + '/_includes/**/*.{html,xml}',
+      src + '/_layouts/*.html',
+      src + '/_locales/*.yml',
+      src + '/_plugins/*.rb',
+      src + '/_posts/*.{markdown,md}',
+      src + '/**/*.{html,markdown,md,yml,json,txt,xml}',
+      src + '/*'
+    ],
+    styles:  srcAssets + '/styles/**/*.css',
+    scripts: srcAssets + '/javascripts/**/*.js',
+    images:  srcAssets + '/images/**/*',
+    sprites: srcAssets + '/images/**/*.png',
+    svg:     srcAssets + '/images/**/*.svg',
+  },
+
+  // Delete all files from the dev build
   delete: {
     src: [developmentAssets]
   },
+
+  // Jekyll
   jekyll: {
     development: {
       src:    src,
@@ -50,6 +85,8 @@ module.exports = {
       config: '_config.yml,_config.build.yml'
     }
   },
+
+  // CSS
   styles: {
     src:  srcAssets + '/styles/*.css',
     dest: developmentAssets + '/css',
@@ -58,11 +95,7 @@ module.exports = {
       autoprefixer: {
         browsers: [
           'last 2 versions',
-          'safari 5',
-          'ie 8',
           'ie 9',
-          'opera 12.1',
-          'ios 6',
           'android 4'
         ],
         cascade: true
@@ -70,6 +103,8 @@ module.exports = {
       mqpacker: { sort: true }
     }
   },
+
+  // Lint CSS files, but none in /vendor/
   lintStyles: {
     src: [
       srcAssets + '/styles/**/*.css',
@@ -82,7 +117,8 @@ module.exports = {
       }
     }
   },
-  // If Browserify is not used
+
+  // JavaScript, if Browserify is not used
   scripts: {
     src: [
       srcAssets + '/javascripts/**/*.js'
@@ -93,6 +129,8 @@ module.exports = {
       // srcAssets + '/javascripts/example-vendor.js'
     ]
   },
+
+  // JavaScript Modules via Browserify
   browserify: {
     // Enable source maps
     debug: true,
@@ -115,10 +153,13 @@ module.exports = {
       outputName: 'head.js'
     }]
   },
-  images: {
-    src:  srcAssets + '/images/**/*',
-    dest: developmentAssets + '/images'
+
+  // Lint JavaScript files
+  lintJs: {
+    src: srcAssets + '/javascripts/*.js'
   },
+
+  // Responsive image generation
   responsiveImages: {
     src:  srcAssets + '/images/example/*.jpg',
     dest: developmentAssets + '/images/example',
@@ -131,6 +172,8 @@ module.exports = {
       sharpen: '2x0.5+0.5+0'
     }
   },
+
+  // WebP image generation
   webp: {
     src: productionAssets + '/images/**/*.{jpg,jpeg,png}',
     dest: productionAssets + '/images/',
@@ -139,54 +182,9 @@ module.exports = {
       quality: 90
     }
   },
-  gzip: {
-    src: production + '/**/*.{html,xml,json,css,js}',
-    dest: production,
-    options: {}
-  },
-  copyfonts: {
-    development: {
-      src:  srcAssets + '/fonts/*',
-      dest: developmentAssets + '/fonts'
-    },
-    production: {
-      src:  developmentAssets + '/fonts/*',
-      dest: productionAssets + '/fonts'
-    }
-  },
-  base64: {
-    src: developmentAssets + '/css/*.css',
-    dest: developmentAssets + '/css',
-    options: {
-      baseDir: build,
-      extensions: ['png'],
-      maxImageSize: 20 * 1024, // bytes
-      debug: false
-    }
-  },
-  watch: {
-    jekyll: [
-      '_config.yml',
-      '_config.build.yml',
-      'stopwords.txt',
-      src + '/_data/**/*.{json,yml,csv}',
-      src + '/_includes/**/*.{html,xml}',
-      src + '/_layouts/*.html',
-      src + '/_locales/*.yml',
-      src + '/_plugins/*.rb',
-      src + '/_posts/*.{markdown,md}',
-      src + '/**/*.{html,markdown,md,yml,json,txt,xml}',
-      src + '/*'
-    ],
-    styles:  srcAssets + '/styles/**/*.css',
-    scripts: srcAssets + '/javascripts/**/*.js',
-    images:  srcAssets + '/images/**/*',
-    sprites: srcAssets + '/images/**/*.png',
-    svg:     srcAssets + '/images/**/*.svg',
-  },
-  jshint: {
-    src: srcAssets + '/javascripts/*.js'
-  },
+
+  // Sprites generation
+  // @TODO: Currently not used, might replace with gulp-svgstore!
   sprites: {
     src: srcAssets + '/images/sprites/icon/*.png',
     dest: {
@@ -211,10 +209,46 @@ module.exports = {
       imgPath: '/assets/images/sprites/icon-sprite.png'
     }
   },
+
+  // Base64
+  // @NOTE: Not used.
+  base64: {
+    src: developmentAssets + '/css/*.css',
+    dest: developmentAssets + '/css',
+    options: {
+      baseDir: build,
+      extensions: ['png'],
+      maxImageSize: 20 * 1024, // bytes
+      debug: false
+    }
+  },
+
+  // Copy images
+  images: {
+    src:  srcAssets + '/images/**/*',
+    dest: developmentAssets + '/images'
+  },
+
+  // Copy fonts
+  copyfonts: {
+    development: {
+      src:  srcAssets + '/fonts/*',
+      dest: developmentAssets + '/fonts'
+    },
+    production: {
+      src:  developmentAssets + '/fonts/*',
+      dest: productionAssets + '/fonts'
+    }
+  },
+
+  // Copy CSS
+  // Used to copy production ready styles.
   copycss: {
     src:  developmentAssets + '/css/*.css',
     dest: productionAssets + '/css/'
   },
+
+  // Optimize CSS, JS, Images, HTML for production
   optimize: {
     css: {
       src:  productionAssets + '/css/*.css',
@@ -283,9 +317,13 @@ module.exports = {
       }
     }
   },
+
+  // Lint production JSON files
   lintJson: {
     src:  production + '/**/*.json'
   },
+
+  // Revision asset files
   revision: {
     src: {
       assets: [
@@ -303,6 +341,8 @@ module.exports = {
       }
     }
   },
+
+  // Replace links to asset files, with rev version
   collect: {
     src: [
       productionAssets + '/manifest.json',
@@ -311,6 +351,16 @@ module.exports = {
     ],
     dest: production
   },
+
+  // GZIP compression
+  // @NOTE: Not used, done with s3_website.
+  gzip: {
+    src: production + '/**/*.{html,xml,json,css,js}',
+    dest: production,
+    options: {}
+  },
+
+  // rsync to staging server
   rsync: {
     src: production + '/**',
     options: {
@@ -328,4 +378,5 @@ module.exports = {
       include: []
     }
   }
+
 };

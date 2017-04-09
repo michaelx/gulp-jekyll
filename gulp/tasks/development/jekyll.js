@@ -1,10 +1,12 @@
+var config      = require('../../config').jekyll.development;
+
 var gulp        = require('gulp');
 var cp          = require('child_process');
 var browsersync = require('browser-sync');
 var runSequence = require('run-sequence');
-var config      = require('../../config').jekyll.development;
 
-// Build the Jekyll site
+
+// Build Jekyll site
 gulp.task('jekyll', function(done) {
   browsersync.notify('Compiling Jekyll');
 
@@ -12,8 +14,7 @@ gulp.task('jekyll', function(done) {
   .on('close', done);
 });
 
-// Rebuild the Jekyll site, and optimize HTML
-// to strip whitespaces (e.g. between <li>).
+// Rebuild Jekyll site
 gulp.task('jekyll-rebuild', function(callback) {
   runSequence('jekyll', 'optimize:html', 'browsersync:reload', callback);
 });

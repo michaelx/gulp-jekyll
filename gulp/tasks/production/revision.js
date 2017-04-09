@@ -1,6 +1,8 @@
+var config = require('../../config').revision;
+
 var gulp   = require('gulp');
 var rev    = require('gulp-rev');
-var config = require('../../config').revision;
+
 
 // Revision all asset files and write a manifest file
 gulp.task('revision', function() {

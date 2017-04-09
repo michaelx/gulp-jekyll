@@ -1,9 +1,11 @@
+var config      = require('../../config').jekyll.production;
+
 var gulp        = require('gulp');
 var cp          = require('child_process');
 var browsersync = require('browser-sync');
-var config      = require('../../config').jekyll.production;
 
-// Build the Jekyll site
+
+// Build Jekyll site
 gulp.task('jekyll:production', function(done) {
   browsersync.notify('Compiling Jekyll (Production)');
 

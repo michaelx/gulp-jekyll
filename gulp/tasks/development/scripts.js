@@ -1,9 +1,11 @@
+var config     = require('../../config').scripts;
+
 var gulp       = require('gulp');
 var concat     = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
-var config     = require('../../config').scripts;
 
-// Concat JavaScript files
+
+// Concat JavaScript files,
 // and create sourcemaps
 gulp.task('scripts', function() {
   return gulp.src(config.src)

@@ -1,8 +1,10 @@
-var gulp      = require('gulp');
-var size      = require('gulp-size');
-var config    = require('../../config').copycss;
+var config = require('../../config').copycss;
 
-// Copy CSS files
+var gulp   = require('gulp');
+var size   = require('gulp-size');
+
+
+// Copy CSS files to build folder
 gulp.task('copy:css', function() {
   return gulp.src(config.src)
     .pipe(gulp.dest(config.dest))

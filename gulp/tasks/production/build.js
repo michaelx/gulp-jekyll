@@ -1,12 +1,13 @@
 var gulp        = require('gulp');
 var runSequence = require('run-sequence');
 
+
 // Run all tasks needed for a build, in defined order
 gulp.task('build:production', function(callback) {
   runSequence('delete', 'jekyll:production',
   [
     // Use just 'styles', when CSS sourcemaps
-    // are needed.
+    // are needed on production build.
     'styles:production',
 
     // If you don’t want to use Browserify,
@@ -17,9 +18,9 @@ gulp.task('build:production', function(callback) {
 
     'images',
     'responsive-images'
-    // 'copy:fonts'
+    //'copy:fonts'
   ],
-  // 'base64',
+  //'base64',
   [
     'copy:css',
     'optimize:js',
@@ -27,10 +28,11 @@ gulp.task('build:production', function(callback) {
     'optimize:xml',
     'optimize:images',
     'optimize:html:production'
-    // 'copy:fonts:production'
+    //'copy:fonts:production'
   ],
-  // CSS after optimize:html, so that all files exist
-  // for Phantom.JS
+
+  // After optimize:html, so that all files exist
+  // for Phantom.JS (UnCSS)
   [
     'optimize:css',
     'lint-json'

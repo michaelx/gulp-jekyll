@@ -1,8 +1,10 @@
-var gulp        = require('gulp');
-var browsersync = require('browser-sync');
 var config      = require('../../config').browsersync.production;
 
-// Start a server and watch changes with BrowserSync
+var gulp        = require('gulp');
+var browsersync = require('browser-sync');
+
+
+// Run production build task and start a server with BrowserSync
 gulp.task('browsersync:production', ['build:production'], function() {
   browsersync(config);
 });

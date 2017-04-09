@@ -1,7 +1,9 @@
+var config     = require('../../config').optimize.json;
+
 var gulp       = require('gulp');
 var jsonminify = require('gulp-jsonminify');
 var size       = require('gulp-size');
-var config     = require('../../config').optimize.json;
+
 
 // Copy and minimize JSON files
 gulp.task('optimize:json', function() {
