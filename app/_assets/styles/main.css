@@ -6,8 +6,7 @@
 @import "utilities/mixins";
 
 /* Third-party */
-@import "vendor/normalize";
-@import "vendor/syntax-highlighting";
+/* e.g. @import "vendor/normalize"; */
 
 /* Base */
 @import "base/reset";

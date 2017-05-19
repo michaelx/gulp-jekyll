@@ -48,6 +48,7 @@
     "gulp-util": "^3.0.8",
     "gulp-webp": "^2.3.0",
     "gulp.spritesmith": "^6.4.0",
+    "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "postcss-reporter": "^3.0.0",
     "postcss-uncss": "^0.14.0",
