@@ -250,7 +250,6 @@ module.exports = {
       dest: productionAssets + '/css/',
       options: {
         uncss: {
-          htmlroot: production,
           html: [
             production + '/**/*.html'
           ],

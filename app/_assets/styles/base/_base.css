@@ -80,7 +80,7 @@ a {
   text-decoration: none;
   color: $brand-color;
   &:visited {
-    color: color($brand-color shade(15%));
+    color: color-mod($brand-color shade(15%));
   }
   &:hover {
     text-decoration: underline;

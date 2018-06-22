@@ -12,8 +12,8 @@ $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
 
 $grey-color:       #828282;
-$grey-color-light: color($grey-color lightness(90%));
-$grey-color-dark:  color($grey-color shade(40%));
+$grey-color-light: color-mod($grey-color lightness(90%));
+$grey-color-dark:  color-mod($grey-color shade(40%));
 
 $on-palm:          600px;
 $on-laptop:        800px;
