@@ -7,11 +7,9 @@ var autoprefixer = require('autoprefixer');
 var mqpacker     = require('css-mqpacker');
 var cssnano      = require('cssnano');
 var plumber      = require('gulp-plumber');
-var gutil        = require('gulp-util');
 var browsersync  = require('browser-sync');
 
 function onError (err) {
-  gutil.beep();
   console.log(err);
   this.emit('end');
 }

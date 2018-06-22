@@ -9,7 +9,7 @@ var gulp   = require('gulp');
 gulp.task('watch', ['browsersync'], function() {
   gulp.watch(config.jekyll,  ['jekyll-rebuild']);
   gulp.watch(config.styles,  ['styles', 'lint-styles']);
-  gulp.watch(config.scripts, ['scripts-browserify', 'lintJs']);
+  gulp.watch(config.scripts, ['scripts-browserify', 'lint-js']);
   gulp.watch(config.images,  ['images']);
   //gulp.watch(config.svg,     ['copy:fonts']);
   //gulp.watch(config.sprites, ['sprites']);

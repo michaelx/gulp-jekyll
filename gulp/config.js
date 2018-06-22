@@ -93,11 +93,6 @@ module.exports = {
     options: {
       precss: {},
       autoprefixer: {
-        browsers: [
-          'last 2 versions',
-          'ie 9',
-          'android 4'
-        ],
         cascade: true
       },
       mqpacker: { sort: true }
@@ -255,6 +250,7 @@ module.exports = {
       dest: productionAssets + '/css/',
       options: {
         uncss: {
+          htmlroot: production,
           html: [
             production + '/**/*.html'
           ],

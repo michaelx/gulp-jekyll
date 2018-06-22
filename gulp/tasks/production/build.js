@@ -37,8 +37,8 @@ gulp.task('build:production', function(callback) {
     'optimize:css',
     'lint-json'
   ],
-  //'revision',
-  //'rev:collect',
+  'revision',
+  'rev:collect',
   // [
   //   'webp'
   //   'gzip'
