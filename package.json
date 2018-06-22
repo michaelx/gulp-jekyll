@@ -1,6 +1,6 @@
 {
   "name": "gulp-jekyll",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The build process for gulp-jekyll",
   "author": "Michael Xander",
   "repository": "michaelx/gulp-jekyll",
