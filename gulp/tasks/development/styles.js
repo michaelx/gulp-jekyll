@@ -1,14 +1,15 @@
-var config       = require('../../config').styles;
+var config            = require('../../config').styles;
 
-var gulp         = require('gulp');
-var postcss      = require('gulp-postcss');
-var precss       = require('precss');
-var autoprefixer = require('autoprefixer');
-var mqpacker     = require('css-mqpacker');
-var cssnano      = require('cssnano');
-var plumber      = require('gulp-plumber');
-var sourcemaps   = require('gulp-sourcemaps');
-var browsersync  = require('browser-sync');
+var gulp              = require('gulp');
+var postcss           = require('gulp-postcss');
+var advancedVariables = require('postcss-advanced-variables');
+var presetEnv         = require('postcss-preset-env');
+var nested            = require('postcss-nested');
+var mqpacker          = require('css-mqpacker');
+var cssnano           = require('cssnano');
+var plumber           = require('gulp-plumber');
+var sourcemaps        = require('gulp-sourcemaps');
+var browsersync       = require('browser-sync');
 
 function onError (err) {
   console.log(err);
@@ -23,10 +24,11 @@ gulp.task('styles', function() {
 
   // PostCSS plugins
   var processors = [
-    precss(config.options.precss),
-    autoprefixer(config.options.autoprefixer),
+    advancedVariables(config.options.advancedVariables),
+    presetEnv(config.options.presetEnv),
+    nested(config.options.nested),
     mqpacker(config.options.mqpacker),
-    cssnano()
+    cssnano(config.options.cssnano)
   ];
 
   return gulp.src(config.src)

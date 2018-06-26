@@ -91,11 +91,15 @@ module.exports = {
     src:  srcAssets + '/styles/*.css',
     dest: developmentAssets + '/css',
     options: {
-      precss: {},
-      autoprefixer: {
-        cascade: true
+      advancedVariables: {},
+      presetEnv: {
+        autoprefixer: {
+          cascade: true
+        }
       },
-      mqpacker: { sort: true }
+      nested: {},
+      mqpacker: { sort: true },
+      cssnano: {}
     }
   },
 

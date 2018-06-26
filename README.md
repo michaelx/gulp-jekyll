@@ -4,13 +4,14 @@ Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
 
 ## Features
 
-- PostCSS with PreCSS, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
+- PostCSS with [postcss-advanced-variables](https://github.com/jonathantneal/postcss-advanced-variables), [postcss-preset-env](https://github.com/csstools/postcss-preset-env) (includes Autoprefixer), [postcss-nested](https://github.com/postcss/postcss-nested), [CSS MQPacker](https://github.com/hail2u/node-css-mqpacker), and [cssnano](https://github.com/cssnano/cssnano).
 - UnCSS for production.
-- Jekyll build and rebuild with BrowserSync.
+- Jekyll build and rebuild with BrowserSync live reload.
 - Browserify or just gulp-concat, as you prefer.
 - Optimization (and minification) of images, HTML, CSS, JavaScript, JSON, and XML files.
 - Linting with JSHint and Stylelint.
 - Extensive Stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide).
+- Sourcemap generation.
 - Responsive image creation, or image resizing, through either GraphicsMagick or ImageMagick.
 - Image sprites.
 - Gzip compression.
@@ -22,9 +23,25 @@ Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
 
 - User-guide
 - Modularizing the default Jekyll theme, to make use of the new 7-1 pattern
-- s3 preview task
-- s3 publish task
 - JSON-LD generator
+
+## Prerequisites
+
+Node.js (and npm, included), use [NVM](https://github.com/creationix/nvm) to install and manage versions. Currently tested with Node.js `v6.10.1` (LTS).
+
+Ruby, use [rbenv](https://github.com/rbenv/rbenv) to install and manage versions. Currently tested with ruby `2.3.1p112`.
+
+[Bundler](https://github.com/bundler/bundler), install with:
+
+```sh
+gem install bundler
+```
+
+[bower](https://github.com/bower/bower), install with:
+
+```sh
+npm install -g bower
+```
 
 ## Installation
 
