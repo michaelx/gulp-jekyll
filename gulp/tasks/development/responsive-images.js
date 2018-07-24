@@ -14,6 +14,6 @@ gulp.task('responsive-images', function() {
     .pipe(changed(config.dest))
 
     .pipe(imageResize(config.options))
-    .pipe(rename(function (path) { path.basename += config.outputSuffix; }))
+    .pipe(rename(function(path) { path.basename += config.outputSuffix; }))
     .pipe(gulp.dest(config.dest));
 });

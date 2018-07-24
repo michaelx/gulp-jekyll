@@ -5,8 +5,14 @@ var browsersync  = require('browser-sync');
 var browserify   = require('browserify');
 var source       = require('vinyl-source-stream');
 var watchify     = require('watchify');
+var log          = require('fancy-log');
 var bundleLogger = require('../../util/bundleLogger');
-var handleErrors = require('../../util/handleErrors');
+
+function onError(err) {
+  log('\x1b[31m' + 'Browserify Error:', err.message, '\x1b[0m');
+  // Keep gulp from hanging on this task
+  this.emit('end');
+}
 
 
 // Run JavaScript through Browserify
@@ -36,7 +42,7 @@ gulp.task('scripts-browserify', function(callback) {
       return bundler
         .bundle()
         // Report compile errors
-        .on('error', handleErrors)
+        .on('error', onError)
         // Use vinyl-source-stream to make the
         // stream gulp compatible. Specifiy the
         // desired output filename here.

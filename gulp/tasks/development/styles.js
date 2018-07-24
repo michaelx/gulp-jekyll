@@ -11,8 +11,9 @@ var plumber           = require('gulp-plumber');
 var sourcemaps        = require('gulp-sourcemaps');
 var browsersync       = require('browser-sync');
 
-function onError (err) {
+function onError(err) {
   console.log(err);
+  // Keep gulp from hanging on this task
   this.emit('end');
 }
 

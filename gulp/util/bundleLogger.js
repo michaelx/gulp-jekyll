@@ -1,21 +1,19 @@
-/* bundleLogger
-   ------------
-   Provides gulp style logs to the bundle method in browserify.js
-*/
+// Provides gulp style logs to the bundle method in browserify.js
 
-var gutil        = require('gulp-util');
+var log          = require('fancy-log');
 var prettyHrtime = require('pretty-hrtime');
 var startTime;
+
 
 module.exports = {
   start: function(filepath) {
     startTime = process.hrtime();
-    gutil.log('Bundling', gutil.colors.green(filepath));
+    log('Bundling\x1b[32m', filepath, '\x1b[0m');
   },
 
   end: function(filepath) {
     var taskTime = process.hrtime(startTime);
     var prettyTime = prettyHrtime(taskTime);
-    gutil.log('Bundled', gutil.colors.green(filepath), 'in', gutil.colors.magenta(prettyTime));
+    log('Bundled\x1b[32m', filepath, '\x1b[0m' + 'after' + '\x1b[35m', prettyTime, '\x1b[0m');
   }
 };
