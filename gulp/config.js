@@ -48,22 +48,13 @@ module.exports = {
   watch: {
     jekyll: [
       '_config.yml',
-      '_config.build.yml',
-      'stopwords.txt',
-      src + '/_data/**/*.{json,yml,csv}',
-      src + '/_includes/**/*.{html,xml}',
-      src + '/_layouts/*.html',
-      src + '/_locales/*.yml',
-      src + '/_plugins/*.rb',
-      src + '/_posts/*.{markdown,md}',
-      src + '/**/*.{html,markdown,md,yml,json,txt,xml}',
-      src + '/*'
+      src + '/**/*.{html,markdown,md,yml,json,csv,txt,xml,rb}'
     ],
     styles:  srcAssets + '/styles/**/*.css',
     scripts: srcAssets + '/javascripts/**/*.js',
     images:  srcAssets + '/images/**/*',
     sprites: srcAssets + '/images/**/*.png',
-    svg:     srcAssets + '/images/**/*.svg',
+    svg:     srcAssets + '/images/**/*.svg'
   },
 
   // Delete all files from the dev build
