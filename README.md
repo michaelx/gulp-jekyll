@@ -27,49 +27,63 @@ Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
 
 ## Prerequisites
 
-Node.js (and npm, included), use [NVM](https://github.com/creationix/nvm) to install and manage versions. Currently tested with Node.js `v6.10.1` (LTS).
+> Note: Use [asdf-vm](https://github.com/asdf-vm/asdf) to install and manage versions of Node.js and Ruby. Alternatives like `NVM`, `nodenv`, and `rbenv` can be used as long as there’s a `.nvmrc`, `.ruby-version`, etc. file.
 
-Ruby, use [rbenv](https://github.com/rbenv/rbenv) to install and manage versions. Currently tested with ruby `2.3.1p112`.
+**Node.js**. Currently developed against Node.js `8.11.4`.
 
-[Bundler](https://github.com/bundler/bundler), install with:
+**Ruby**. Currently developed against ruby `2.5.3`.
+
+[**Bundler**](https://github.com/bundler/bundler), install with:
 
 ```sh
 gem install bundler
 ```
 
-[bower](https://github.com/bower/bower), install with:
-
-```sh
-npm install -g bower
-```
-
 ## Installation
 
-Clone the repository on your computer and change into the projects folder. Run:
+Clone the repository and change into the `gulp-jekyll` folder. Run:
 
 ```sh
-$ bundle
-$ bower install
-$ npm install
+bundle
+npm install
+npm run bower install
 ```
 
 ## Setup
 
 Open `gulp/config.js` and change settings if needed.
 
-## Running Gulp.js
+## Usage
 
-Three tasks are available:
+Create development build with live-reload:
 
 ```sh
-$ gulp
-$ gulp publish
-$ gulp deploy
+npm start
 ```
 
-- Running `gulp` will start a development server, build assets and the Jekyll site and start a `watch` task.
-- Running `gulp publish` will copy and optimize assets and run a production build of Jekyll.
-- Running `gulp deploy` will copy the generated files with Rsync to your server.
+Create production build with preview:
+
+```sh
+npm run build
+```
+
+Deploy latest production build through rsync:
+
+```sh
+npm run stage
+```
+
+Deploy latest production build on AWS:
+
+```sh
+npm run s3:push
+```
+
+Dry-run *(preview)* a deployment on AWS:
+
+```sh
+npm run s3:dry
+```
 
 ## CSS File Organization
 
